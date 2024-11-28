@@ -8,6 +8,7 @@ import { Terminal } from "lucide-react";
 import { SiReact, SiNodedotjs, SiTypescript, SiMongodb } from "react-icons/si";
 import { TypeAnimation } from "@/components/type-animation";
 import { TerminalCommands } from "@/components/terminal-commands";
+import { ProjectsSection } from "@/components/projects-section";
 
 const technologies = [
   { name: "React", icon: SiReact },
@@ -39,7 +40,7 @@ export default function Home() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="font-mono text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+            <h1 className="font-mono text-2xl font-bold bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 bg-clip-text text-transparent">
               {"<Dev />"}
             </h1>
           </motion.div>
@@ -124,7 +125,6 @@ export default function Home() {
                 <TerminalCommands />
               </div>
             </motion.div>
-
             <motion.div 
               className="flex gap-4 justify-center"
               initial={{ opacity: 0, y: 20 }}
@@ -133,7 +133,7 @@ export default function Home() {
             >
               <Button 
                 size="lg" 
-                className="bg-gradient-to-r from-primary to-purple-600 hover:opacity-90 rounded-xl transform hover:scale-105 transition-all"
+                className="bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 hover:opacity-90 rounded-xl transform hover:scale-105 transition-all"
               >
                 Ver Projetos
               </Button>
@@ -145,6 +145,10 @@ export default function Home() {
                 Contato
               </Button>
             </motion.div>
+
+            <ProjectsSection />
+
+           
           </div>
         </div>
 
