@@ -31,16 +31,18 @@ export default function Home() {
         transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
       />
 
-      <nav className="fixed top-0 w-full border-b border-border/40 bg-background/60 backdrop-blur-xl backdrop-saturate-150 z-50">
+      <nav className="fixed top-0 w-full z-50">
         <div className="container flex h-16 items-center justify-between">
-          <motion.h1 
-            className="font-mono text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent"
+          <motion.div 
+            className="px-4 py-2 rounded-full bg-background/60 backdrop-blur-xl backdrop-saturate-150 border border-border/40"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            {"<Dev />"}
-          </motion.h1>
+            <h1 className="font-mono text-2xl font-bold bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">
+              {"<Dev />"}
+            </h1>
+          </motion.div>
           
           <motion.div 
             className="flex items-center gap-6"
@@ -48,13 +50,14 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden md:flex items-center gap-1 bg-background/60 backdrop-blur-xl backdrop-saturate-150 rounded-full border border-border/40 px-2">
               <Button 
                 variant="ghost" 
                 className="font-space-grotesk relative group px-4 py-2 hover:bg-accent/20 hover:backdrop-blur-sm rounded-full transition-all duration-300"
               >
                 <span className="relative z-10">Projetos</span>
                 <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-primary/10 to-purple-600/10 blur-sm" />
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-primary/20" />
               </Button>
               
               <Button 
@@ -63,6 +66,7 @@ export default function Home() {
               >
                 <span className="relative z-10">Sobre</span>
                 <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-primary/10 to-purple-600/10 blur-sm" />
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-primary/20" />
               </Button>
               
               <Button 
@@ -71,10 +75,11 @@ export default function Home() {
               >
                 <span className="relative z-10">Contato</span>
                 <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-primary/10 to-purple-600/10 blur-sm" />
+                <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-primary/20" />
               </Button>
             </div>
             
-            <div className="bg-accent/30 backdrop-blur-sm p-1.5 rounded-full border border-border/50">
+            <div className="bg-background/60 backdrop-blur-xl backdrop-saturate-150 p-1.5 rounded-full border border-border/40">
               <ThemeToggle />
             </div>
           </motion.div>
