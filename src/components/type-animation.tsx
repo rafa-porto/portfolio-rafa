@@ -1,43 +1,44 @@
 "use client"
 
-import { ReactTyped } from 'react-typed'
-import { motion } from "framer-motion"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface TypeAnimationProps {
   strings: string[]
-  className?: string
   typeSpeed?: number
-  startDelay?: number
+  className?: string
   onComplete?: () => void
 }
 
 export function TypeAnimation({ 
   strings, 
-  className, 
-  typeSpeed = 50,
-  startDelay = 500,
-  onComplete,
+  typeSpeed = 50, 
+  className = "", 
+  onComplete 
 }: TypeAnimationProps) {
-  const [isComplete, setIsComplete] = useState(false)
+  const [displayText, setDisplayText] = useState("")
+  const [currentStringIndex, setCurrentStringIndex] = useState(0)
+  const [currentCharIndex, setCurrentCharIndex] = useState(0)
 
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-      className={className}
-    >
-      <ReactTyped
-        strings={strings}
-        typeSpeed={typeSpeed}
-        startDelay={startDelay}
-        showCursor={true}
-        cursorChar="|"
-        loop={false}
-        onComplete={() => setIsComplete(true)}
-        stopped={isComplete}
-      />
-    </motion.div>
-  )
+  useEffect(() => {
+    if (currentStringIndex >= strings.length) {
+      onComplete?.()
+      return
+    }
+
+    const currentString = strings[currentStringIndex]
+
+    if (currentCharIndex < currentString.length) {
+      const timer = setTimeout(() => {
+        setDisplayText(prev => prev + currentString[currentCharIndex])
+        setCurrentCharIndex(prev => prev + 1)
+      }, typeSpeed)
+
+      return () => clearTimeout(timer)
+    } else {
+      setCurrentStringIndex(prev => prev + 1)
+      setCurrentCharIndex(0)
+    }
+  }, [currentStringIndex, currentCharIndex, strings, typeSpeed, onComplete])
+
+  return <span className={className}>{displayText}</span>
 } 

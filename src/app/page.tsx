@@ -5,17 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Terminal } from "lucide-react";
-import { SiReact, SiNodedotjs, SiTypescript, SiMongodb } from "react-icons/si";
 import { TypeAnimation } from "@/components/type-animation";
 import { TerminalCommands } from "@/components/terminal-commands";
 import { ProjectsSection } from "@/components/projects-section";
-
-const technologies = [
-  { name: "React", icon: SiReact },
-  { name: "Node.js", icon: SiNodedotjs },
-  { name: "TypeScript", icon: SiTypescript },
-  { name: "MongoDB", icon: SiMongodb },
-];
+import { SkillsSection } from "@/components/skills-section";
+import { AboutSection } from "@/components/about-section";
 
 export default function Home() {
   return (
@@ -146,43 +140,12 @@ export default function Home() {
               </Button>
             </motion.div>
 
+            <AboutSection />
+            <SkillsSection />
             <ProjectsSection />
-
-           
           </div>
         </div>
 
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-4 gap-4"
-          variants={{
-            hidden: { opacity: 0 },
-            show: {
-              opacity: 1,
-              transition: { staggerChildren: 0.1 }
-            }
-          }}
-          initial="hidden"
-          animate="show"
-        >
-          {technologies.map(({ name, icon: Icon }) => (
-            <motion.div
-              key={name}
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                show: { opacity: 1, y: 0 }
-              }}
-            >
-              <Card className="group backdrop-blur-md bg-background/50 border-border/50 hover:bg-accent/30 transition-all duration-300 hover:scale-105">
-                <div className="p-6 flex items-center gap-3 justify-center">
-                  <Icon className="w-5 h-5 text-primary group-hover:text-primary/80" />
-                  <p className="font-mono text-center group-hover:text-primary/80">
-                    {name}
-                  </p>
-                </div>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
       </main>
     </div>
   );
